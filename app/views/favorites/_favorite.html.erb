@@ -1,0 +1,13 @@
+<% if voice.favorited_by?(current_drink) %>
+  <p>
+    <%= link_to drink_voice_favorites_path(voice), method: :delete,remote:true do %>
+      ♥<%= voice.favorites.count %>
+    <% end %>
+  </p>
+    <% else %>
+  <p>
+    <%= link_to drink_voice_favorites_path(voice), method: :post,remote:true do %>
+      ♡<%= voice.favorites.count %>
+    <% end %>
+  </p>
+<% end %>

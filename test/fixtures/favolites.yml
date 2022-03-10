@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  smoke_id: 1
+  voise_id: 1
+
+two:
+  smoke_id: 1
+  voise_id: 1

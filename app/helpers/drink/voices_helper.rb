@@ -1,0 +1,2 @@
+module Drink::VoicesHelper
+end

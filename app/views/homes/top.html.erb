@@ -1,0 +1,42 @@
+<div class="container mt-5">
+  <h1 class="text-center">ようこそ</h1>
+
+  <div class="row my-3 d-flex justify-content-evenly">
+    <div class="col-5 text-center">
+      <% if drink_signed_in? %>
+        <%= link_to "禁酒中の方",drink_voices_path %>
+      <% else %>
+        <%= link_to '禁酒を始める方', new_drink_registration_path %>
+        <%= link_to '禁酒中の方', new_drink_session_path %>
+      <% end %>
+      <h3 class="my-3">禁酒中の方々</h3>
+        <% @voices.each do |voice| %>
+          <div class="border border-dark pt-3 mt-1">
+            <p><%= voice.story %></p>
+            <p><%= voice.drink.name %>さん</p>
+          </div>
+        <% end %>
+    </div>
+
+    <div class="col-5 text-center">
+      <% if smoke_signed_in? %>
+        <%= link_to "禁煙中の方",smoke_voises_path %>
+      <% else %>
+        <%= link_to '禁煙を始める方', new_smoke_registration_path %>
+        <%= link_to '禁煙中の方', new_smoke_session_path %>
+      <% end %>
+      <h3 class="my-3">禁煙中の方々</h3>
+        <% @voises.each do |voise| %>
+          <div class="border border-dark pt-3 mt-1">
+            <p><%= voise.story %></p>
+            <p><%= voise.smoke.name %>さん</p>
+          </div>
+        <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 text-center">
+      <p>ここは禁酒または禁煙をしたい人のみが集うSNS</p>
+    </div>
+  </div>
+</div>

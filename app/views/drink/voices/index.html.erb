@@ -1,0 +1,47 @@
+<div class="container mt-5 ">
+
+  <div class="row ">
+    <div class="col-4">
+      <h1>禁酒<h1>
+      <h5><%=link_to 'トップ',root_path%></h5>
+      <h5><%=link_to 'ログアウト',destroy_drink_session_path,method: :delete%></h5>
+
+      <h3 class="mt-5">禁酒日記</h3>
+        <%= form_with model: @new_voice,url: drink_voices_path,method: :post do |f| %>
+          <h5>内容</h5>
+            <%= f.text_area :story %>
+          <%= f.submit '投稿' %>
+        <% end %>
+    </div>
+
+    <div class="col-8">
+    <h3>みんなの禁酒日記</h3>
+      <table class="table border border-dark mt-2">
+          <thead>
+            <tr>
+              <th>日記</th>
+              <th>名前</th>
+              <th colspan="3"></th>
+              <th colspan="4"></th>
+            </tr>
+          </thead>
+        <% @voices.each do |voice| %>
+          <tbody>
+            <tr>
+              <td><%= voice.story %></td>
+              <td><%= voice.drink.name %>さん</td>
+              <td>
+                <% if voice.drink == current_drink %>
+                  <%= link_to "削除", drink_voice_path(voice), method: :delete %>
+                <% end %>
+              </td>
+              <td>
+                <%=render 'favorites/favorite', voice: voice%>
+              </td>
+            </tr>
+          </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

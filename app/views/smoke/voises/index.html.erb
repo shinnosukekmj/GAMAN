@@ -1,0 +1,47 @@
+<div class="container mt-5">
+
+  <div class="row">
+    <div class="col-4">
+      <h1>禁煙<h1>
+      <h5><%=link_to 'トップ',root_path%></h5>
+      <h5><%=link_to 'ログアウト',destroy_smoke_session_path,method: :delete%></h5>
+
+      <h3 class="mt-5">禁煙日記</h3>
+        <%= form_with model: @voise,url: smoke_voises_path,method: :post do |f| %>
+          <h5>内容</h5>
+            <%= f.text_area :story %>
+          <%= f.submit '投稿' %>
+        <% end %>
+    </div>
+
+    <div class="col-8">
+      <h3>みんなの禁煙日記</h3>
+        <table class="table border border-dark mt-2">
+            <thead>
+              <tr>
+                <th>日記</th>
+                <th>名前</th>
+                <th colspan="3"></th>
+                <th colspan="4"></th>
+              </tr>
+            </thead>
+          <% @voises.each do |voise| %>
+          <tbody>
+            <tr>
+              <td><%= voise.story %></td>
+              <td><%= voise.smoke.name %>さん</td>
+              <td>
+                <% if voise.smoke == current_smoke %>
+                  <%= link_to "削除", smoke_voise_path(voise), method: :delete %>
+                <% end %>
+              </td>
+              <td>
+                <%=render 'favolites/favolite', voise: voise%>
+              </td>
+            </tr>
+          </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
