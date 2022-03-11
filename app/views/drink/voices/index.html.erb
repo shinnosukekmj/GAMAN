@@ -3,6 +3,7 @@
   <div class="row ">
     <div class="col-4">
       <h1>禁酒<h1>
+      <h5><%=link_to 'マイページ',drink_drink_path(current_drink)%></h5>
       <h5><%=link_to 'トップ',root_path%></h5>
       <h5><%=link_to 'ログアウト',destroy_drink_session_path,method: :delete%></h5>
 
@@ -29,7 +30,11 @@
           <tbody>
             <tr>
               <td><%= voice.story %></td>
-              <td><%= voice.drink.name %>さん</td>
+              <td>
+                <%=link_to drink_drink_path(voice) do%>
+                  <%= voice.drink.name %>さん
+                <%end%>
+                </td>
               <td>
                 <% if voice.drink == current_drink %>
                   <%= link_to "削除", drink_voice_path(voice), method: :delete %>

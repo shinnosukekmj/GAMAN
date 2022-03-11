@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 }
 
   namespace :drink do
+    resources :drinks,only: [:show, :update]
     resources :voices, only: [:index, :create, :destroy] do
       resource :favorites, only: [:create, :destroy]
     end
@@ -18,6 +19,7 @@ Rails.application.routes.draw do
 }
 
   namespace :smoke do
+    resources :smokes,only: [:show, :update]
     resources :voises, only: [:index, :create, :destroy] do
       resource :favolites, only: [:create, :destroy]
     end

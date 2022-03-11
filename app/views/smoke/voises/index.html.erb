@@ -3,6 +3,7 @@
   <div class="row">
     <div class="col-4">
       <h1>禁煙<h1>
+      <h5><%=link_to 'マイページ',smoke_smoke_path(current_smoke)%></h5>
       <h5><%=link_to 'トップ',root_path%></h5>
       <h5><%=link_to 'ログアウト',destroy_smoke_session_path,method: :delete%></h5>
 
@@ -29,7 +30,11 @@
           <tbody>
             <tr>
               <td><%= voise.story %></td>
-              <td><%= voise.smoke.name %>さん</td>
+              <td>
+                <%=link_to smoke_smoke_path(voise) do%>
+                  <%= voise.smoke.name %>さん
+                <%end%>
+              </td>
               <td>
                 <% if voise.smoke == current_smoke %>
                   <%= link_to "削除", smoke_voise_path(voise), method: :delete %>

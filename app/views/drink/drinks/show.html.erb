@@ -1,0 +1,31 @@
+<div class="container mt-5 ">
+  <div class="row">
+    <div class="col-5 pt-3">
+
+      <h2 class="text-center">名前：<%= @drink.name %>さん</h2>
+
+      <div class="text-center">
+        <h4 class="my-3 ">↓名前変更↓</h4>
+        <%= form_with model: @drink,url: drink_drink_path(@drink),method: :patch do |f| %>
+          <%= f.text_field :name, autofocus: true%>
+          <%= f.submit "変更",:class => "btn btn-primary btn-block" %>
+        <% end %>
+      </div>
+
+    </div>
+
+    <div class="col-4">
+      <table class="table border border-dark mt-2">
+        <tr>
+          <th>投稿一覧</th>
+        </tr>
+        <% @voices.each do |voice| %>
+          <tr>
+            <td class="text-center"><%= voice.story %></td>
+          </tr>
+        <% end %>
+      </table>
+      <h5 class="text-end"><%=link_to '戻る',drink_voices_path%></h5>
+    </div>
+  </div>
+</div>
