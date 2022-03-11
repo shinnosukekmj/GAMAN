@@ -1,7 +1,7 @@
 class Smoke::SmokesController < ApplicationController
   def show
     @smoke = Smoke.find(params[:id])
-    @voises = @smoke.voises
+    @voises = @smoke.voises.page(params[:page]).per(5).order(created_at: :desc)
   end
 
   def update

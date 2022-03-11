@@ -1,7 +1,7 @@
 class Smoke::VoisesController < ApplicationController
   def index
     @voise = Voise.new
-    @voises = Voise.all
+    @voises = Voise.page(params[:page]).per(10).order(created_at: :desc)
   end
 
   def create

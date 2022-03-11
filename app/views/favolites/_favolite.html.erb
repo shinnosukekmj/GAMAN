@@ -1,13 +1,13 @@
 <% if voise.favolited_by?(current_smoke) %>
   <p>
     <%= link_to smoke_voise_favolites_path(voise), method: :delete do %>
-      ♥<%= voise.favolites.count %>
+      ❤️<%= voise.favolites.count %>
     <% end %>
   </p>
     <% else %>
   <p>
     <%= link_to smoke_voise_favolites_path(voise), method: :post do %>
-      ♡<%= voise.favolites.count %>
+      🤍<%= voise.favolites.count %>
     <% end %>
   </p>
 <% end %>

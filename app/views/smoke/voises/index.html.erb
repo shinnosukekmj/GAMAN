@@ -1,7 +1,7 @@
 <div class="container mt-5">
 
   <div class="row">
-    <div class="col-4">
+    <div class="col-3">
       <h1>禁煙<h1>
       <h5><%=link_to 'マイページ',smoke_smoke_path(current_smoke)%></h5>
       <h5><%=link_to 'トップ',root_path%></h5>
@@ -11,11 +11,11 @@
         <%= form_with model: @voise,url: smoke_voises_path,method: :post do |f| %>
           <h5>内容</h5>
             <%= f.text_area :story %>
-          <%= f.submit '投稿' %>
+          <%= f.submit '投稿',:class => "btn btn-success btn-block" %>
         <% end %>
     </div>
 
-    <div class="col-8">
+    <div class="col-7">
       <h3>みんなの禁煙日記</h3>
         <table class="table border border-dark mt-2">
             <thead>
@@ -31,13 +31,15 @@
             <tr>
               <td><%= voise.story %></td>
               <td>
-                <%=link_to smoke_smoke_path(voise) do%>
+                <%=link_to smoke_smoke_path(voise.smoke) do%>
                   <%= voise.smoke.name %>さん
                 <%end%>
               </td>
               <td>
                 <% if voise.smoke == current_smoke %>
-                  <%= link_to "削除", smoke_voise_path(voise), method: :delete %>
+                  <%= link_to smoke_voise_path(voise), method: :delete do%>
+                    <button type="button" class="btn btn-danger">削除</button>
+                  <%end%>
                 <% end %>
               </td>
               <td>
@@ -47,6 +49,7 @@
           </tbody>
         <% end %>
       </table>
+      <%= paginate @voises %>
     </div>
   </div>
 </div>

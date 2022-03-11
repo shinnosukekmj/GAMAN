@@ -1,7 +1,7 @@
 class Drink::VoicesController < ApplicationController
   def index
     @new_voice = Voice.new
-    @voices = Voice.all
+    @voices = Voice.page(params[:page]).per(10).order(created_at: :desc)
   end
 
   def create

@@ -6,11 +6,11 @@
       <% if drink_signed_in? %>
         <%= link_to "禁酒中の方",drink_voices_path %>
       <% else %>
-        <%= link_to '禁酒を始める方', new_drink_registration_path %>
+        <%= link_to '禁酒を始める方', new_drink_registration_path %>/
         <%= link_to '禁酒中の方', new_drink_session_path %>
       <% end %>
       <h3 class="my-3">禁酒中の方々</h3>
-        <% @voices.each do |voice| %>
+        <% @voices.first(5).each do |voice| %>
           <div class="border border-dark pt-3 mt-1">
             <p><%= voice.story %></p>
             <p><%= voice.drink.name %>さん</p>
@@ -22,11 +22,11 @@
       <% if smoke_signed_in? %>
         <%= link_to "禁煙中の方",smoke_voises_path %>
       <% else %>
-        <%= link_to '禁煙を始める方', new_smoke_registration_path %>
+        <%= link_to '禁煙を始める方', new_smoke_registration_path %>/
         <%= link_to '禁煙中の方', new_smoke_session_path %>
       <% end %>
       <h3 class="my-3">禁煙中の方々</h3>
-        <% @voises.each do |voise| %>
+        <% @voises.first(5).each do |voise| %>
           <div class="border border-dark pt-3 mt-1">
             <p><%= voise.story %></p>
             <p><%= voise.smoke.name %>さん</p>

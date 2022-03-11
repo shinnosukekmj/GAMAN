@@ -1,15 +1,24 @@
 <div class="container mt-5 ">
   <div class="row">
     <div class="col-5 pt-3">
+        <h2 class="text-center">名前：<%= @drink.name %>さん</h2>
 
-      <h2 class="text-center">名前：<%= @drink.name %>さん</h2>
+        <div class="text-center my-3">
+          <%@favorite_count = 0%>
+          <%@voices.each do |voice|%>
+            <%@favorite_count += voice.favorites.count%>
+          <%end%>
+          <%=@favorite_count%>つの❤️が送られてます！
+        </div>
 
-      <div class="text-center">
-        <h4 class="my-3 ">↓名前変更↓</h4>
-        <%= form_with model: @drink,url: drink_drink_path(@drink),method: :patch do |f| %>
-          <%= f.text_field :name, autofocus: true%>
-          <%= f.submit "変更",:class => "btn btn-primary btn-block" %>
-        <% end %>
+        <%if @drink == current_drink%>
+          <div class="text-center">
+            <h4 class="my-3 ">↓名前変更↓</h4>
+            <%= form_with model: @drink,url: drink_drink_path(@drink),method: :patch do |f| %>
+              <%= f.text_field :name, autofocus: true%>
+              <%= f.submit "変更",:class => "btn btn-primary btn-block" %>
+            <% end %>
+        <%end%>
       </div>
 
     </div>
@@ -18,13 +27,22 @@
       <table class="table border border-dark mt-2">
         <tr>
           <th>投稿一覧</th>
+          <th colspan="2"></th>
         </tr>
         <% @voices.each do |voice| %>
           <tr>
             <td class="text-center"><%= voice.story %></td>
+            <td>
+              <% if voice.drink == current_drink %>
+                <%= link_to drink_voice_path(voice), method: :delete do %>
+                  <button type="button" class="btn btn-danger btn-sm">削除</button>
+                <%end%>
+              <% end %>
+            </td>
           </tr>
         <% end %>
       </table>
+      <%= paginate @voices %>
       <h5 class="text-end"><%=link_to '戻る',drink_voices_path%></h5>
     </div>
   </div>

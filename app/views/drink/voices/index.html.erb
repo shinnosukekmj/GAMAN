@@ -1,7 +1,7 @@
 <div class="container mt-5 ">
 
   <div class="row ">
-    <div class="col-4">
+    <div class="col-3">
       <h1>禁酒<h1>
       <h5><%=link_to 'マイページ',drink_drink_path(current_drink)%></h5>
       <h5><%=link_to 'トップ',root_path%></h5>
@@ -11,11 +11,11 @@
         <%= form_with model: @new_voice,url: drink_voices_path,method: :post do |f| %>
           <h5>内容</h5>
             <%= f.text_area :story %>
-          <%= f.submit '投稿' %>
+          <%= f.submit '投稿',:class => "btn btn-success btn-block" %>
         <% end %>
     </div>
 
-    <div class="col-8">
+    <div class="col-7">
     <h3>みんなの禁酒日記</h3>
       <table class="table border border-dark mt-2">
           <thead>
@@ -31,13 +31,15 @@
             <tr>
               <td><%= voice.story %></td>
               <td>
-                <%=link_to drink_drink_path(voice) do%>
+                <%=link_to drink_drink_path(voice.drink) do%>
                   <%= voice.drink.name %>さん
                 <%end%>
                 </td>
               <td>
                 <% if voice.drink == current_drink %>
-                  <%= link_to "削除", drink_voice_path(voice), method: :delete %>
+                  <%= link_to drink_voice_path(voice), method: :delete do %>
+                    <button type="button" class="btn btn-danger">削除</button>
+                  <%end%>
                 <% end %>
               </td>
               <td>
@@ -47,6 +49,7 @@
           </tbody>
         <% end %>
       </table>
+    <%= paginate @voices %>
     </div>
   </div>
 </div>

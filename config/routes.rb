@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 }
 
   namespace :drink do
-    resources :drinks,only: [:show, :update]
+    resources :drinks,only: [:show, :update,]
     resources :voices, only: [:index, :create, :destroy] do
       resource :favorites, only: [:create, :destroy]
     end
