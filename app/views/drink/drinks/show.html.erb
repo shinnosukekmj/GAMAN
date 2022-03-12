@@ -8,7 +8,7 @@
           <%@voices.each do |voice|%>
             <%@favorite_count += voice.favorites.count%>
           <%end%>
-          <%=@favorite_count%>つの❤️が送られてます！
+          <%=@favorite_count%>個の❤️が送られています！
         </div>
 
         <%if @drink == current_drink%>
@@ -18,9 +18,19 @@
               <%= f.text_field :name, autofocus: true%>
               <%= f.submit "変更",:class => "btn btn-primary btn-block" %>
             <% end %>
+          </div>
         <%end%>
-      </div>
 
+        <div class="text-center mt-5">
+          <p>投稿内容に悩んでる方はこちらを押してください</p>
+          <button type="button" class="btn btn-info" onclick="alertFunction()">仮投稿(投稿は保存されません)</button>
+        </div>
+
+        <div class="text-center mt-5">
+          いくら貯金できているか計算したい方は
+          <%=link_to '〝ここ〟',prices_path%>
+          をクリック！
+        </div>
     </div>
 
     <div class="col-4">
@@ -42,8 +52,15 @@
           </tr>
         <% end %>
       </table>
-      <%= paginate @voices %>
       <h5 class="text-end"><%=link_to '戻る',drink_voices_path%></h5>
     </div>
   </div>
 </div>
+
+<script>
+  function alertFunction() {
+  let promptStr = prompt('投稿したい内容を入力してください');
+  alert(promptStr);
+  }
+</script>
+

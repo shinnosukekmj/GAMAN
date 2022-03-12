@@ -1,7 +1,7 @@
 class Drink::DrinksController < ApplicationController
   def show
     @drink = Drink.find(params[:id])
-    @voices = @drink.voices.page(params[:page]).per(5).order(created_at: :desc)
+    @voices = @drink.voices.all.order(created_at: :desc)
   end
 
   def update

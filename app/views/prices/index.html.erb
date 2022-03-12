@@ -1,0 +1,22 @@
+<div class="conteiner d-flex justify-content-center">
+  <div class="row text-center">
+    <div class="col-12">
+      <h3>自分がいくら貯金できたかの計算をしましょう！</h3>
+      <h5 class="mt-3">1つ目のボックスには金額を入力してください</h5>
+      <p>☆あなたのタバコ一箱の値段</p>
+      <p>☆よく飲むお酒の値段</p>
+      <h5>2つ目のボックスには我慢できた数量を入力してください</h5>
+      <p>☆我慢できたタバコの箱の数</p>
+      <p>☆我慢できたお酒の本数</p>
+      <h5>〝計算〟ボタンを押して表示された金額が<br>
+      あなたが今まで節約できた金額になります</h5>
+      <p class="ex">計算結果は保存されないのでご注意ください！</p>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-12 price_button">
+      <%=render 'prices/price',new_price: @new_price,prices: @prices%>
+    </div>
+  </div>
+</div>
