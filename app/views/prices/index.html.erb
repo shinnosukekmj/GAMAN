@@ -16,7 +16,12 @@
 
   <div class="row mt-5">
     <div class="col-12 price_button">
-      <%=render 'prices/price',new_price: @new_price,prices: @prices%>
+      <%=render 'prices/price',price: @price,prices: @prices%>
+    </div>
+    <div class="text-end">
+      <%= link_to :back do %>
+        <h5>戻る</h5>
+      <% end %>
     </div>
   </div>
 </div>

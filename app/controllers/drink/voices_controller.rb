@@ -1,6 +1,7 @@
 class Drink::VoicesController < ApplicationController
+  before_action :authenticate_drink!
   def index
-    @new_voice = Voice.new
+    @voice = Voice.new
     @voices = Voice.page(params[:page]).per(10).order(created_at: :desc)
   end
 
@@ -10,7 +11,8 @@ class Drink::VoicesController < ApplicationController
     if @voice.save
       redirect_to drink_voices_path
     else
-      render 'index'
+      @voices = Voice.page(params[:page]).per(10).order(created_at: :desc)
+      render :index
     end
   end
 

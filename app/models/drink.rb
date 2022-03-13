@@ -5,4 +5,6 @@ class Drink < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :voices,dependent: :destroy
   has_many :favorites, dependent: :destroy
+
+   validates :name, presence: true
 end

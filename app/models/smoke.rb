@@ -5,4 +5,6 @@ class Smoke < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :voises,dependent: :destroy
   has_many :favolites, dependent: :destroy
+
+   validates :name, presence: true
 end

@@ -6,3 +6,16 @@ ja:
       previous: "&lsaquo; 前"
       next: "次 &rsaquo;"
       truncate: "..."
+  activerecord:
+    attributes:
+      drink:
+        name: "名前"
+      smoke:
+        name: "名前"
+      voice:
+        story: "内容"
+      voise:
+        story: "内容"
+      price:
+        money: "金額"
+        count: "数量"

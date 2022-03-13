@@ -1,4 +1,5 @@
 class Smoke::VoisesController < ApplicationController
+  before_action :authenticate_smoke!
   def index
     @voise = Voise.new
     @voises = Voise.page(params[:page]).per(10).order(created_at: :desc)
@@ -10,7 +11,8 @@ class Smoke::VoisesController < ApplicationController
     if @voise.save
       redirect_to smoke_voises_path
     else
-      render 'index'
+      @voises = Voise.page(params[:page]).per(10).order(created_at: :desc)
+      render :index
     end
   end
 

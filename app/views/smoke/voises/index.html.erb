@@ -7,6 +7,7 @@
       <h5><%=link_to 'ログアウト',destroy_smoke_session_path,method: :delete%></h5>
 
       <h3 class="mt-5">禁煙日記</h3>
+      <%=render 'layouts/error',object: @voise%>
         <%= form_with model: @voise,url: smoke_voises_path,method: :post do |f| %>
           <h5>内容</h5>
             <%= f.text_area :story %>

@@ -1,4 +1,6 @@
 class Drink::DrinksController < ApplicationController
+  before_action :authenticate_drink!
+  
   def show
     @drink = Drink.find(params[:id])
     @voices = @drink.voices.all.order(created_at: :desc)
@@ -6,8 +8,12 @@ class Drink::DrinksController < ApplicationController
 
   def update
     @drink = Drink.find(params[:id])
-    @drink.update(drink_params)
-    redirect_to drink_drink_path(current_drink)
+    if @drink.update(drink_params)
+      redirect_to drink_drink_path(current_drink)
+    else
+      @voices = @drink.voices.all.order(created_at: :desc)
+      render :show
+    end
   end
 
 

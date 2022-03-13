@@ -1,14 +1,17 @@
 class PricesController < ApplicationController
   def index
     Price.destroy_all
-    @new_price = Price.new
+    @price = Price.new
     @prices = Price.all
   end
 
   def create
     @price= Price.new(price_params)
-    @price.save
-    @prices = Price.all
+    if @price.save
+      @prices = Price.all
+    else
+      @prices = Price.all
+    end
   end
 
   private

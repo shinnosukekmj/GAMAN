@@ -14,6 +14,7 @@
         <%if @smoke == current_smoke%>
           <div class="text-center">
             <h4 class="my-3 ">↓名前変更↓</h4>
+            <%=render 'layouts/error',object: @smoke%>
             <%= form_with model: @smoke,url: smoke_smoke_path(@smoke),method: :patch do |f| %>
               <%= f.text_field :name, autofocus: true%>
               <%= f.submit "変更",:class => "btn btn-primary btn-block" %>
