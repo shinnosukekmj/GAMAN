@@ -1,0 +1,24 @@
+<div class="container mt-5 me-5">
+    <h3>このサイトは禁酒または禁煙をしたい人が集まるSNSサイトです</h3>
+    <h4>まずは禁煙するか禁酒をするかを選びましょう</h4>
+    <p>どっちもは止めて、1つずつこなしていくことをお勧めいたします</p>
+    <h4>アカウントを作ったらあとはその日我慢した時の思いを投稿するだけ！</h4>
+    <p>あなたの頑張りは同じ頑張っている仲間たちに共有されます<br>
+    トップページには新着5件の投稿が表示されています</p>
+    <h4>❤︎️を送って応援しましょう！<h4>
+    <h6>試しに押してみてください</h6>
+    <div class="heart"></div>
+    <h5>あなたがいくら貯金できたかを計算することもできます</h5>
+    <p>とにかく計算したい方は<%=link_to '〝こちら〟',prices_path%>からどうぞ(登録は不要です)</p>
+</div>
+
+<script>
+$(function(){
+  $('.heart').on('click', function(){
+    $('.heart').addClass('heart-event');
+  });
+  $('.heart').mouseout(function(){
+    $('.heart').removeClass('heart-event');
+  });
+});
+</script>

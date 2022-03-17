@@ -11,7 +11,7 @@
       <% end %>
       <h3 class="my-3">禁酒中の方々</h3>
         <% @voices.first(5).each do |voice| %>
-          <div class="border border-dark pt-3 mt-1">
+          <div class="border border-dark pt-3 mt-1 bg">
             <p><%= voice.story %></p>
             <p><%= voice.drink.name %>さん</p>
           </div>
@@ -27,7 +27,7 @@
       <% end %>
       <h3 class="my-3">禁煙中の方々</h3>
         <% @voises.first(5).each do |voise| %>
-          <div class="border border-dark pt-3 mt-1">
+          <div class="border border-dark pt-3 mt-1 bg">
             <p><%= voise.story %></p>
             <p><%= voise.smoke.name %>さん</p>
           </div>
